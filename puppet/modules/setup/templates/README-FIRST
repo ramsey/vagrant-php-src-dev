@@ -1,0 +1,47 @@
+
+Hi, there!
+
+You'll need a GitHub account. If you don't have one, register for one here:
+https://github.com/signup/free
+
+Next, generate an SSH keypair for use with your GitHub account.
+This should do it:
+
+    ssh-keygen -C "php-development" -t rsa -m RFC4716 -b 4096 \
+        -f /home/vagrant/.ssh/github
+
+Now, that you've generated your keypair, type the following to see
+the public key:
+
+    cat ~/.ssh/github.pub
+
+Copy your public key and add it to your list of SSH Keys in GitHub here:
+https://github.com/settings/ssh
+
+I've already set up your ~/.ssh/config file to use this key with
+github.com.
+
+Next, go here to fork the PHP source to your GitHub account:
+https://github.com/php/php-src/fork
+
+Once that's done, run the setup_repo script, using the SSH clone URL for
+your forked version of the PHP source, like this (replace "yourname" with
+your GitHub username):
+
+    ./setup_repo git@github.com:yourname/php-src.git
+
+That should do it. You're now ready to build PHP. These commands should
+help get you started:
+
+    cd ~/src/php-src
+    ./buildconf
+    ../config.nice-5.5
+    make
+    make install
+
+This will install PHP in ~/build/php-5.5. You can try it out by running:
+
+    ~/build/php-5.5/bin/php --version
+
+It might be helpful to add /home/vagrant/build/php-5.5/bin to your PATH.
+

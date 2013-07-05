@@ -1,0 +1,17 @@
+#!/bin/bash
+
+git ls-remote "$1" &> /dev/null
+if [ "$?" -ne 0 ]; then
+    echo -e "\n[ERROR] Unable to read from '$1'\n"
+    exit 1;
+fi
+
+cd ~/src/php-src
+git remote add origin $1
+git fetch origin
+git branch --set-upstream master origin/master
+git branch --set-upstream PHP-5.5 origin/PHP-5.5
+git checkout master && git pull origin master
+git checkout PHP-5.5 && git pull origin PHP-5.5
+
+echo -e "\nEverything's all set up to use your fork of php-src. Congrats!\n\n"
