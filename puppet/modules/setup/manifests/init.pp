@@ -1,7 +1,12 @@
 # Set up APT
 class setup {
-    class {'apt':}->
-    class {'packages':}->
-    class {'vbox':}->
+
+    # Dependency declarations
+    Class['apt'] -> Class['packages'] -> Class['vbox'] -> Class['help']
+
+    class {'apt':}
+    class {'packages':}
+    class {'vbox':}
     class {'help':}
+
 }
