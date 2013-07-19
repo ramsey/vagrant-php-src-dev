@@ -9,12 +9,12 @@ class php {
     File {
         owner  => "vagrant",
         group  => "vagrant",
-        mode   => "0775";
+        mode   => "0775",
     }
 
     # Defaults for exec declarations in this class.
     Exec {
-        user => "vagrant";
+        user => "vagrant",
     }
 
     file { "vagrant-src":
