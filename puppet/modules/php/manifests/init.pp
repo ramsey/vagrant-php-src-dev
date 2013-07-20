@@ -18,13 +18,13 @@ class php {
     }
 
     file { "vagrant-src":
-        path      => "/home/vagrant/src",
         ensure => "directory",
+        path   => "/home/vagrant/src",
     }
 
     file { "vagrant-src-config":
-        path    => "/home/vagrant/src/config.nice-5.5",
         ensure  => "present",
+        path    => "/home/vagrant/src/config.nice-5.5",
         replace => "no",
         content => template("php/config.nice-5.5"),
     }
