@@ -35,13 +35,13 @@ help get you started:
 
     cd ~/src/php-src
     ./buildconf
-    ../config.nice-5.5
+    ../config.nice-5.6
     make
     make install
 
-This will install PHP in ~/build/php-5.5. You can try it out by running:
+This will install PHP in ~/build/php-5.6. You can try it out by running:
 
-    ~/build/php-5.5/bin/php --version
+    ~/build/php-5.6/bin/php --version
 
-It might be helpful to add /home/vagrant/build/php-5.5/bin to your PATH.
+It might be helpful to add /home/vagrant/build/php-5.6/bin to your PATH.
 

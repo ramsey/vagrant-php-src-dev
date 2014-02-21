@@ -2,8 +2,9 @@
 class php {
 
     # Dependency declarations
-    File['vagrant-src'] -> File['vagrant-src-config'] -> Exec['Clone the php-src repository']
-    Exec['Clone the php-src repository'] -> Exec['Rename the origin remote to upstream'] -> Exec['Check out the PHP 5.5 branch']
+    File['vagrant-src'] -> File['vagrant-src-config-5.5'] -> Exec['Clone the php-src repository']
+    File['vagrant-src'] -> File['vagrant-src-config-5.6']
+    Exec['Clone the php-src repository'] -> Exec['Rename the origin remote to upstream'] -> Exec['Check out the PHP 5.5 branch'] -> Exec['Check out the PHP 5.6 branch']
 
     # Defaults for file declarations in this class.
     File {
@@ -22,11 +23,18 @@ class php {
         path   => "/home/vagrant/src",
     }
 
-    file { "vagrant-src-config":
+    file { "vagrant-src-config-5.5":
         ensure  => "present",
         path    => "/home/vagrant/src/config.nice-5.5",
         replace => "no",
         content => template("php/config.nice-5.5"),
+    }
+
+    file { "vagrant-src-config-5.6":
+        ensure  => "present",
+        path    => "/home/vagrant/src/config.nice-5.6",
+        replace => "no",
+        content => template("php/config.nice-5.6"),
     }
 
     exec { "Clone the php-src repository":
@@ -41,6 +49,11 @@ class php {
 
     exec { "Check out the PHP 5.5 branch":
         command => "git checkout -b PHP-5.5 upstream/PHP-5.5",
+        cwd     => "/home/vagrant/src/php-src",
+    }
+
+    exec { "Check out the PHP 5.6 branch":
+        command => "git checkout -b PHP-5.6 upstream/PHP-5.6",
         cwd     => "/home/vagrant/src/php-src",
     }
 
