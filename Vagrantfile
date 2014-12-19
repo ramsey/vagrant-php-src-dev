@@ -3,11 +3,10 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "precise64"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "192.168.42.231"
 
   config.vm.provider :virtualbox do |virtualbox|
-      config.vm.box_url = "http://files.vagrantup.com/precise64.box"
       virtualbox.customize ["modifyvm", :id, "--name", "vagrant-php-src-dev"]
       virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       virtualbox.customize ["modifyvm", :id, "--memory", "1024"]
