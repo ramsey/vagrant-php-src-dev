@@ -9,9 +9,9 @@ fi
 cd ~/src/php-src
 git remote add origin $1
 git fetch origin
-git branch --set-upstream master origin/master
-git branch --set-upstream PHP-5.5 origin/PHP-5.5
-git branch --set-upstream PHP-5.6 origin/PHP-5.6
+git branch --set-upstream-to=origin/master master
+git branch --set-upstream-to=origin/PHP-5.5 PHP-5.5
+git branch --set-upstream-to=origin/PHP-5.6 PHP-5.6
 git checkout master && git pull origin master
 git checkout PHP-5.5 && git pull origin PHP-5.5
 git checkout PHP-5.6 && git pull origin PHP-5.6
