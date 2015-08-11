@@ -5,7 +5,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "192.168.42.231"
-
+  config.vm.synced_folder "php-src/", "/home/vagrant/src/php-src", create: true
+  
   config.vm.provider :virtualbox do |virtualbox|
       virtualbox.customize ["modifyvm", :id, "--name", "vagrant-php-src-dev"]
       virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
